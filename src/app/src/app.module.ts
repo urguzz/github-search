@@ -21,6 +21,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {SearchBarComponent} from './components/search-bar/search-bar.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import {MatDividerModule} from "@angular/material/divider";
+import {RepoDetailContainer} from "./components/repo-detail/repo-detail.container";
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {MatDividerModule} from "@angular/material/divider";
     ListComponent,
     RepoInfoComponent,
     RepoDetailComponent,
+    RepoDetailContainer,
     LoaderComponent,
     SearchBarComponent,
     PaginatorComponent
@@ -36,7 +38,7 @@ import {MatDividerModule} from "@angular/material/divider";
     BrowserModule,
     RouterModule.forRoot([
       {path: 'search', component: ListComponent},
-      {path: 'repos/:id', component: RepoDetailComponent},
+      {path: 'repos/:id', component: RepoDetailContainer},
       {path: '**', redirectTo: 'search'},
     ]),
     FormsModule,

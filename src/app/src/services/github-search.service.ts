@@ -44,6 +44,7 @@ export class GithubSearchService {
       `https://api.github.com/search/repositories?q=${query}&page=${this.page$.value}&per_page=${this.pageSize$.value}`;
     return this.http.get<any>(url).pipe(
       tap((result) => this.numberOfElements$.next(result.total_count)),
+      //tap((...args) => console.log('>', ...args)),
       map(result => result.items.map((item: any) => {
         const repo: GithubRepo = {
           id: item.id,
@@ -89,8 +90,8 @@ export class GithubSearchService {
         }
         return repoDetail;
       }),
+      finalize(() => this.isLoading$.next(false)),
       catchError(() => EMPTY),
-      finalize(() => this.isLoading$.next(false))
     );
   }
 }

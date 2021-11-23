@@ -1,20 +1,20 @@
 <mat-card class="content-wrapper"
-          *ngIf="item$ | async as repo">
+          *ngIf="item">
   <div class="header-wrapper">
-    <h2>{{repo.name}}</h2>
-    <h4>{{repo.owner}}</h4>
+    <h2>{{item.name}}</h2>
+    <h4>{{item.owner}}</h4>
   </div>
 
   <mat-divider [inset]="true"></mat-divider>
 
   <div class="body-wrapper">
-    <p>Url: <a href="{{repo.url}}">{{repo.url}}</a></p>
-    <p>Description: {{repo.description}}</p>
-    <p>Language: {{repo.language}}</p>
-    <p>Created at: {{repo.creationDate.toISOString().split('T')[0]}}</p>
-    <p>Updated at: {{repo.updateDate.toISOString().split('T')[0]}}</p>
-    <p>Repository id: {{repo.id}}</p>
-    <p>Owner id: {{repo.ownerId}}</p>
+    <p>Url: <a href="{{item.url}}">{{item.url}}</a></p>
+    <p>Description: {{item.description}}</p>
+    <p>Language: {{item.language}}</p>
+    <p>Created at: {{item.creationDate.toISOString().split('T')[0]}}</p>
+    <p>Updated at: {{item.updateDate.toISOString().split('T')[0]}}</p>
+    <p>Repository id: {{item.id}}</p>
+    <p>Owner id: {{item.ownerId}}</p>
   </div>
 
   <mat-divider [inset]="true"></mat-divider>
@@ -23,20 +23,18 @@
 
     <div class="counter-wrapper">
       <mat-icon>remove_red_eye</mat-icon>
-      <span>{{repo.watchers}}</span>
+      <span>{{item.watchers}}</span>
     </div>
 
     <div class="counter-wrapper">
       <mat-icon>stars</mat-icon>
-      <span>{{repo.stars}}</span>
+      <span>{{item.stars}}</span>
     </div>
 
     <div class="counter-wrapper">
       <mat-icon>timeline</mat-icon>
-      <span>{{repo.forks}}</span>
+      <span>{{item.forks}}</span>
     </div>
 
   </div>
 </mat-card>
-
-<app-loader [isLoading]="isLoading$"></app-loader>

@@ -1,5 +1,4 @@
 import {Component, Input} from '@angular/core';
-import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-loader',
@@ -7,5 +6,5 @@ import {BehaviorSubject} from "rxjs";
   styleUrls: ['./loader.component.css'],
 })
 export class LoaderComponent {
-  @Input("isLoading") isLoading$?: BehaviorSubject<boolean>;
+  @Input("isLoading") isLoading: boolean | null = false;
 }
