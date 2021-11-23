@@ -1,0 +1,9 @@
+<mat-card class="content-wrapper">
+  <h2 [routerLink]="['/repos', item.id]">{{item.name}}</h2>
+  <h4>{{item.owner}}</h4>
+  <div class="stars-wrapper">
+    <mat-icon>stars</mat-icon>
+    <span>{{item.stars}}</span>
+  </div>
+</mat-card>
+

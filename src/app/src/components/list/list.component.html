@@ -1,0 +1,12 @@
+<section class="content-wrapper">
+  <div class="list-wrapper">
+    <app-repo-info class="list-item"
+                   *ngFor="let item of values$ | async"
+                   [item]="item">
+    </app-repo-info>
+  </div>
+
+  <app-paginator></app-paginator>
+</section>
+
+<app-loader [isLoading]="isLoading$"></app-loader>

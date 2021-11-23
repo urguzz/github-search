@@ -1,0 +1,30 @@
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 300px;
+  max-width: 300px;
+  min-height: 150px;
+  max-height: 150px;
+}
+
+.stars-wrapper {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+h2, h4 {
+  margin: 0 auto;
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+h2:hover {
+  color: #673ab7;
+  text-decoration: underline;
+  cursor: pointer;
+}

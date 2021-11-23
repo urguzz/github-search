@@ -1,0 +1,44 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-wrapper {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 75%;
+}
+
+.header-wrapper {
+  text-align: center;
+}
+
+.body-wrapper {
+  flex-grow: 1;
+  min-height: 500px;
+  font-size: 18px;
+}
+
+.counters-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.counter-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+h2, h4 {
+  margin: 0 auto;
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,7 @@
+:host {
+  position: fixed;
+  bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+}

@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+html {
+  background-color: #f5f5f5;
+}
+
+/* for the input field in toolbar */
+.mat-form-field-flex, .mat-form-field-label-wrapper {
+  padding-top: 0;
+}
+
+.mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+.mat-form-field-underline {
+  bottom: 0;
+}
+
+.mat-form-field-infix {
+  border-top: 0;
+}
+
+/* end */
+
+.mat-divider {
+  padding-bottom: 10px;
+}
+
+.mat-toolbar {
+  background-color: rgba(0, 0, 0, .06);
+}
