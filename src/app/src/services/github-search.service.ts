@@ -12,7 +12,7 @@ import {
   catchError,
   Observable,
   distinctUntilChanged,
-  combineLatest, skip,
+  combineLatest, skip, filter,
 } from "rxjs";
 import {GithubRepoDetail} from "../interfaces/github-repo-detail";
 
@@ -27,18 +27,39 @@ export class GithubSearchService {
   numberOfElements$ = new BehaviorSubject<number>(0);
 
   private query: string = '';
+  private prevQuery: string = '';
+  private propagatePageChange: boolean = true;
 
   constructor(private http: HttpClient) {
     combineLatest([
-      this.page$.pipe(skip(1), debounceTime(300), distinctUntilChanged()),
-      this.pageSize$.pipe(skip(1), debounceTime(300), distinctUntilChanged())
+      this.page$.pipe(
+        debounceTime(300),
+        distinctUntilChanged(),
+        filter(() => {
+          if (this.propagatePageChange) {
+            return true;
+          }
+          this.propagatePageChange = true;
+          return false;
+        })
+      ),
+      this.pageSize$.pipe(
+        debounceTime(300),
+        distinctUntilChanged())
     ]).pipe(
+      skip(1),
       switchMap(() => this.search(this.query))
     ).subscribe();
   }
 
   search(query: string): Observable<GithubRepo[]> {
     this.query = query;
+    if (this.prevQuery !== query) {
+      this.prevQuery = query;
+      this.propagatePageChange = false;
+      this.page$.next(1);
+    }
+
     this.isLoading$.next(true);
     const url =
       `https://api.github.com/search/repositories?q=${query}&page=${this.page$.value}&per_page=${this.pageSize$.value}`;
@@ -59,7 +80,10 @@ export class GithubSearchService {
         this.items$.next([]);
         return EMPTY;
       }),
-      finalize(() => this.isLoading$.next(false))
+      finalize(() => {
+        this.isLoading$.next(false);
+        this.propagatePageChange = true;
+      })
     );
   }
 
